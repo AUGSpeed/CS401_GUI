@@ -20,7 +20,7 @@ class AddressBookApplication {
      * Currently, it is being used to test the init method.
      * @param args
      */
-
+/*
     public static void main(String args[]) {
 
         //simply invokes static methods of the Menu class
@@ -50,7 +50,7 @@ class AddressBookApplication {
         init("AddressInputDataFile.txt");
         //initAddressBookExercise(addressBook);
         */
-        AddressBook mainAddressBook = new AddressBook();
+        /*AddressBook mainAddressBook = new AddressBook();
         boolean working = true;
         while(working == true)
         {
@@ -86,8 +86,9 @@ class AddressBookApplication {
             }
         }
 
-    }
 
+    }
+*/
     /**
      * Creates 2 instances of Address Entry, and adds them to ab, then calls ab.list().
      * @param ab An AddressBook Object passed to the function to add new Address Entries to it.
