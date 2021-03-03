@@ -37,17 +37,20 @@ public class AddressBook {
      * List Method
      * Sort everything in the Address Book, then iterate through addressEntryList and for each item call toString and print it out
      */
-    public void list()
+    public String list()
     {
         addressEntryList.sort(null);
         Iterator<AddressEntry> iterate = addressEntryList.iterator();
         Integer count = 1;
+        String all = "";
         while(iterate.hasNext())
         {
-            System.out.println("\nEntry Number " + count);
-            System.out.println(iterate.next().toString());
+            all += "\nEntry Number " + count;
+            all += iterate.next().toString();
             count++;
         }
+        System.out.println(all);
+        return all;
     }
 
     /**
