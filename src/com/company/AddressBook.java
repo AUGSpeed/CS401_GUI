@@ -21,7 +21,6 @@ public class AddressBook {
     Vector<AddressEntry> addressEntryList = new Vector<>();
     static Scanner input = new Scanner(System.in);
 
-
     /**
      * Add Method
      * Adds a new AddressEntry object to the addressEntryList
