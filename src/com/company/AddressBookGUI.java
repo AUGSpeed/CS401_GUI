@@ -12,13 +12,11 @@ public class AddressBookGUI extends JDialog{
     JList <AddressEntry> addressEntryJList = new JList<AddressEntry>();
     DefaultListModel<AddressEntry> myaddressEntryListModel = new DefaultListModel<AddressEntry>();
     AddressBook ab = new AddressBook();
-    AddressEntry x = new AddressEntry("Michael", "LaRussa", "Calaveras Expy.", "Milpitas", "California", 95035, "555-123-4567", "Example@gmail.com");
 
 
     public AddressBookGUI() {
         setContentPane(contentPane);
         setModal(true);
-        ab.add(x);
 
 
         displayButton.addActionListener(new ActionListener() {
@@ -41,6 +39,16 @@ public class AddressBookGUI extends JDialog{
                 NewGUI newGUI = new NewGUI(ab);
                 newGUI.pack();
                 newGUI.setVisible(true);
+
+                //Display
+                myaddressEntryListModel = new DefaultListModel<AddressEntry>();
+                for(int i = 0; i<ab.addressEntryList.size(); i++)
+                {  myaddressEntryListModel.add(i, ab.addressEntryList.elementAt(i)); }
+                addressEntryJList = new JList<AddressEntry>(myaddressEntryListModel);
+                addressEntryJList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+                addressEntryJList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+                addressEntryJList.setVisibleRowCount(-1);
+                scrollPane.setViewportView(addressEntryJList);
             }
         });
         removeButton.addActionListener(new ActionListener() {
@@ -48,6 +56,16 @@ public class AddressBookGUI extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 Integer index = addressEntryJList.getSelectedIndex();
                 ab.addressEntryList.removeElementAt(index);
+
+                //Display
+                myaddressEntryListModel = new DefaultListModel<AddressEntry>();
+                for(int i = 0; i<ab.addressEntryList.size(); i++)
+                {  myaddressEntryListModel.add(i, ab.addressEntryList.elementAt(i)); }
+                addressEntryJList = new JList<AddressEntry>(myaddressEntryListModel);
+                addressEntryJList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+                addressEntryJList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
+                addressEntryJList.setVisibleRowCount(-1);
+                scrollPane.setViewportView(addressEntryJList);
             }
         });
     }
