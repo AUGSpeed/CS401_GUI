@@ -1,4 +1,5 @@
 package com.company;
+import java.sql.*;
 import java.util.*;
 
 
@@ -29,6 +30,47 @@ public class AddressBook {
 
     public void add(AddressEntry addressEntry)
     {
+        try{
+            Class.forName("oracle.jdbc.OracleDriver");
+            Connection conn = DriverManager.getConnection("jdbc:oracle:thin" +
+                            ":@adcsdb01.csueastbay.edu:1521:mcspdb.ad.csueastbay.edu"
+                    , "MCS1018", "y_WrlhyT");
+           // Statement stmt = conn.createStatement();
+
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO " +
+                            "ADDRESSENTRYTABLE values(?,?,?,?,?,?,?,?)");
+           stmt.setString(1, addressEntry.firstName);
+           stmt.setString(2, addressEntry.lastName);
+           stmt.setString(3, addressEntry.street);
+           stmt.setString(4, addressEntry.city);
+           stmt.setString(5, addressEntry.state);
+           stmt.setInt(6, addressEntry.zip);
+           stmt.setString(7, addressEntry.phone);
+           stmt.setString(8, addressEntry.email);
+           stmt.executeUpdate();
+
+            /*
+
+           stmt.executeUpdate("INSERT INTO ADDRESSENTRYTABLE (FIRST_NAME," +
+                    "LAST_NAME,STREET,CITY,STATE,ZIP,PHONE,EMAIL)" +
+                    "VALUES (CAST(addressEntry.firstName AS varchar2(100)), " +
+                    "CAST(addressEntry" +
+                    ".lastName AS varchar2(100)), " +
+                    "CAST(addressEntry.street varchar2(100)), CAST" +
+                    "(addressEntry" +
+                    ".city as varchar2(100)),CAST(addressEntry" +
+                    ".state as varchar2(100), addressEntry.zip, CAST" +
+                    "(addressEntry" +
+                    ".phone as varchar2(100)), CAST(addressEntry" +
+                    ".email as varchar2(100))) ");
+
+             */
+
+
+            conn.close();
+        }
+        catch(Exception e){System.out.println(e);}
+
         addressEntryList.addElement(addressEntry);
     }
 
