@@ -49,24 +49,6 @@ public class AddressBook {
            stmt.setString(8, addressEntry.email);
            stmt.executeUpdate();
 
-            /*
-
-           stmt.executeUpdate("INSERT INTO ADDRESSENTRYTABLE (FIRST_NAME," +
-                    "LAST_NAME,STREET,CITY,STATE,ZIP,PHONE,EMAIL)" +
-                    "VALUES (CAST(addressEntry.firstName AS varchar2(100)), " +
-                    "CAST(addressEntry" +
-                    ".lastName AS varchar2(100)), " +
-                    "CAST(addressEntry.street varchar2(100)), CAST" +
-                    "(addressEntry" +
-                    ".city as varchar2(100)),CAST(addressEntry" +
-                    ".state as varchar2(100), addressEntry.zip, CAST" +
-                    "(addressEntry" +
-                    ".phone as varchar2(100)), CAST(addressEntry" +
-                    ".email as varchar2(100))) ");
-
-             */
-
-
             conn.close();
         }
         catch(Exception e){System.out.println(e);}
