@@ -135,11 +135,12 @@ public class AddressBook {
      * This method will search using the search query string, and then display them.
      * @param query The string passed to the function, which is assumed to be a Last Name, and will search the AddressBook for Last Name fields containing it.
      */
-    public void search(String query)
+    public AddressBook search(String query)
     {
         Integer count = 0;
         Integer numOfEntries = 1;
         Integer size = addressEntryList.size();
+        AddressBook ab = new AddressBook();
         int indexes[] = new int[size];
         //For loop, iterating through our entire list of Address Entries
         for (int i = 0; i < addressEntryList.size(); i++)
@@ -156,11 +157,13 @@ public class AddressBook {
         {
             //Display entries found
             System.out.println("The following " + count + " entries were found.");
+
             for (int i = 0; i < count; i++)
             {
                 System.out.println("(" + numOfEntries + ")");
                 System.out.println(addressEntryList.get(indexes[i]).toString());
                 numOfEntries++;
+                ab.addressEntryList.add(addressEntryList.get(indexes[i]));
             }
         }
         //No entries were found
@@ -168,6 +171,7 @@ public class AddressBook {
             System.out.println("No entries were found.");
         }
 
+        return ab;
 
     }
 }
