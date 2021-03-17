@@ -77,59 +77,6 @@ public class AddressBook {
         return all;
     }
 
-    /**
-     * This method does the bulk of the work when removing an entry, simply because I couldn't find an easy way to do it from the main class.
-     * This method will search using the search query string, and then ask to remove any Entries that may show.
-     * @param query The string passed to the function, which is assumed to be a Last Name, and will search the AddressBook for Last Name fields matching it.
-     */
-    public void searchToRemove(String query)
-    {
-        Integer count = 0;
-        Integer numOfEntries = 1;
-        Integer size = addressEntryList.size();
-        int indexes[] = new int[size];
-        for (int i = 0; i < addressEntryList.size(); i++)
-        {
-            if(addressEntryList.get(i).getLastName().contentEquals(query))
-            {
-                indexes[count] = i;
-                count++;
-            }
-        }
-        if (count > 0)
-        {
-            System.out.println("The following " + count + " entries were found. Select the number of the one you wish to remove:");
-            for (int i = 0; i < count; i++)
-            {
-                System.out.println("(" + numOfEntries + ")");
-                System.out.println(addressEntryList.get(indexes[i]).toString());
-                numOfEntries++;
-            }
-            String in = input.nextLine();
-            for (int i = 0; i < count; i++) {
-                if (in.contentEquals(String.valueOf(i+1)))
-                {
-                    System.out.println("Do you want to remove this Entry? Y/N");
-                    System.out.println(addressEntryList.get(indexes[i]).toString());
-                    String answer = input.nextLine();
-                    if (answer.contentEquals("Y") || answer.contentEquals("y"))
-                    {
-                        addressEntryList.remove(indexes[i]);
-                    }
-                    else
-                    {
-                        System.out.println("Returning to the Main Menu...");
-                    }
-                }
-            }
-        }
-        else {
-            System.out.println("No entries were found.");
-        }
-
-
-    }
-
 
     /**
      * This method will search using the search query string, and then display them.
@@ -138,7 +85,6 @@ public class AddressBook {
     public AddressBook search(String query)
     {
         Integer count = 0;
-        Integer numOfEntries = 1;
         Integer size = addressEntryList.size();
         AddressBook ab = new AddressBook();
         int indexes[] = new int[size];
@@ -155,14 +101,9 @@ public class AddressBook {
         //If we found anything
         if (count > 0)
         {
-            //Display entries found
-            System.out.println("The following " + count + " entries were found.");
-
+            //Add entries found
             for (int i = 0; i < count; i++)
             {
-                System.out.println("(" + numOfEntries + ")");
-                System.out.println(addressEntryList.get(indexes[i]).toString());
-                numOfEntries++;
                 ab.addressEntryList.add(addressEntryList.get(indexes[i]));
             }
         }
