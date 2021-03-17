@@ -1,4 +1,7 @@
-package com.company;
+package address.gui;
+
+import address.data.AddressBook;
+import address.data.AddressEntry;
 
 import javax.swing.*;
 import java.awt.event.*;

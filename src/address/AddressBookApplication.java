@@ -1,9 +1,11 @@
-package com.company;
+package address;
+import address.data.AddressBook;
+import address.data.AddressEntry;
+
+
 import java.io.FileReader;
-import java.util.Iterator;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
-import java.util.*;
 
 /**
  * Address Book Application is a program that can store Addresses of
@@ -153,24 +155,6 @@ class AddressBookApplication {
         init(in, ab);
     }
 
-    /**
-     * Asks for all needed fields for a new, and then gives it to our init function.
-     * @param ab An AddressBook object so that we don't have to create one here.
-     */
-    public static void addNewEntry(AddressBook ab) {
-        AddressEntry ae = new AddressEntry();
-        ae.setFirstName(Menu.prompt_FirstName());
-        ae.setLastName(Menu.prompt_LastName());
-        ae.setStreet(Menu.prompt_Street());
-        ae.setCity(Menu.prompt_City());
-        ae.setState(Menu.prompt_State());
-        ae.setZip(Menu.prompt_Zip());
-        ae.setPhone(Menu.prompt_Telephone());
-        ae.setEmail(Menu.prompt_Email());
-        System.out.println("Thank you, the following contact has been added to your list: ");
-        System.out.println(ae.toString());
-        ab.add(ae);
-    }
 
     /**
      * A handler function so that this code need not be present in main, and passes most of its functionality to Address Book's Search to Remove method.

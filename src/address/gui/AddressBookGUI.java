@@ -1,6 +1,8 @@
-package com.company;
+package address.gui;
+import address.data.AddressBook;
+import address.data.AddressEntry;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 import java.sql.Connection;
 import java.sql.DriverManager;

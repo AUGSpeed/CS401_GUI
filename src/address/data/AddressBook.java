@@ -1,4 +1,5 @@
-package com.company;
+package address.data;
+
 import java.sql.*;
 import java.util.*;
 
@@ -19,7 +20,7 @@ public class AddressBook {
      * the Address Entry objects placed into the Address Book.
      */
 
-    Vector<AddressEntry> addressEntryList = new Vector<>();
+    public Vector<AddressEntry> addressEntryList = new Vector<>();
     static Scanner input = new Scanner(System.in);
 
     /**

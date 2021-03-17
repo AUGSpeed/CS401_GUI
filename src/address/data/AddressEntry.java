@@ -1,4 +1,4 @@
-package com.company;
+package address.data;
 
 /**
  * AddressEntry is an Object that holds 7 Strings and 1 Integer, meant to
