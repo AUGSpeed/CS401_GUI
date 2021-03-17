@@ -14,11 +14,11 @@ public class AddressEntry implements Comparable<AddressEntry>{
     /**
      * Holds values for the name.
      */
-    public Name name;
+    public Name name = new Name();
     /**
      * Holds values for the address.
      */
-    public Address address;
+    public Address address = new Address();
     /**
      * Holds a String for a phone number.
      */
@@ -115,7 +115,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
      */
     public String toString()
     {
-        return "\nFirst Name: " + name.firstName + "\nLast Name: " + name.lastName + "\nStreet: " + address.street + "\nCity: " + address.city + "\nState: " + address.state + "\nZip: " + address.getZip().toString() + "\nPhone: " + phone + "\nEmail: " + email;
+        return "\nFirst Name: " + name.firstName + "\nLast Name: " + name.lastName + "\nStreet: " + address.street + "\nCity: " + address.city + "\nState: " + address.state + "\nZip: " + address.zip.toString() + "\nPhone: " + phone + "\nEmail: " + email;
     }
 
     /**
