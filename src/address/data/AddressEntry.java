@@ -12,29 +12,13 @@ package address.data;
 public class AddressEntry implements Comparable<AddressEntry>{
 
     /**
-     * Holds a String for a first name.
+     * Holds values for the name.
      */
-    public String firstName;
+    public Name name;
     /**
-     * Holds a String for a last name.
+     * Holds values for the address.
      */
-    public String lastName;
-    /**
-     * Holds a String for a street.
-     */
-    public String street;
-    /**
-     * Holds a String for a city.
-     */
-    public String city;
-    /**
-     * Holds a String for a state.
-     */
-    public String state;
-    /**
-     * Holds an Integer for a zip code.
-     */
-    public Integer zip;
+    public Address address;
     /**
      * Holds a String for a phone number.
      */
@@ -43,6 +27,10 @@ public class AddressEntry implements Comparable<AddressEntry>{
      * Holds a String for an email.
      */
     public String email;
+    /**
+     * Holds a String for an id.
+     */
+    public String id;
 
     /**
      * Address Entry Initializer
@@ -51,12 +39,12 @@ public class AddressEntry implements Comparable<AddressEntry>{
      */
     public AddressEntry()
     {
-        firstName = "";
-        lastName = "";
-        street = "";
-        city = "";
-        state = "";
-        zip = 0;
+        name.firstName = "";
+        name.lastName = "";
+        address.street = "";
+        address.city = "";
+        address.state = "";
+        address.zip = 0;
         phone = "";
         email = "";
     }
@@ -77,14 +65,26 @@ public class AddressEntry implements Comparable<AddressEntry>{
      */
 
     public AddressEntry(String fn, String ln, String str, String ci, String sta, Integer zi, String ph, String em) {
-        firstName = fn;
-        lastName = ln;
-        street = str;
-        city = ci;
-        state = sta;
-        zip = zi;
+        name.firstName = fn;
+        name.lastName = ln;
+        address.street = str;
+        address.city = ci;
+        address.state = sta;
+        address.zip = zi;
         phone = ph;
         email = em;
+    }
+
+    public AddressEntry(Name _name, Address _address, String _email, String _phone, String _id){
+        name.firstName=_name.firstName;
+        name.lastName=_name.lastName;
+        address.street=_address.street;
+        address.city=_address.city;
+        address.state=_address.state;
+        address.zip=_address.zip;
+        phone=_phone;
+        email=_email;
+        id=_id;
     }
 
 
@@ -95,13 +95,13 @@ public class AddressEntry implements Comparable<AddressEntry>{
      */
     public int compareTo(AddressEntry ae)
     {
-        if(lastName.compareToIgnoreCase(ae.lastName) > 0) {
+        if(name.lastName.compareToIgnoreCase(ae.name.lastName) > 0) {
             return 1;
         }
-        else if(lastName.compareToIgnoreCase(ae.lastName) < 0) {
+        else if(name.lastName.compareToIgnoreCase(ae.name.lastName) < 0) {
             return -1;
         }
-        else if(lastName.compareToIgnoreCase(ae.lastName) == 0) {
+        else if(name.lastName.compareToIgnoreCase(ae.name.lastName) == 0) {
             return 0;
         }
         System.out.println("An Error occurred when comparing.");
@@ -115,7 +115,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
      */
     public String toString()
     {
-        return "\nFirst Name: " + firstName + "\nLast Name: " + lastName + "\nStreet: " + street + "\nCity: " + city + "\nState: " + state + "\nZip: " + zip.toString() + "\nPhone: " + phone + "\nEmail: " + email;
+        return "\nFirst Name: " + name.firstName + "\nLast Name: " + name.lastName + "\nStreet: " + address.street + "\nCity: " + address.city + "\nState: " + address.state + "\nZip: " + address.getZip().toString() + "\nPhone: " + phone + "\nEmail: " + email;
     }
 
     /**
@@ -126,7 +126,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public void setFirstName(String fn)
     {
-        firstName = fn;
+        name.firstName = fn;
     }
 
     /**
@@ -137,7 +137,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public void setLastName(String ln)
     {
-        lastName = ln;
+        name.lastName = ln;
     }
 
     /**
@@ -148,7 +148,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public void setStreet(String str)
     {
-        street = str;
+        address.street = str;
     }
 
     /**
@@ -159,7 +159,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public void setCity(String ci)
     {
-        city = ci;
+        address.city = ci;
     }
 
     /**
@@ -170,7 +170,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public void setState(String sta)
     {
-        state = sta;
+        address.state = sta;
     }
 
     /**
@@ -181,7 +181,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public void setZip(Integer zi)
     {
-        zip = zi;
+        address.zip = zi;
     }
 
     /**
@@ -214,7 +214,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public String getFirstName()
     {
-        return firstName;
+        return name.firstName;
     }
 
     /**
@@ -225,7 +225,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public String getLastName()
     {
-        return lastName;
+        return name.lastName;
     }
 
     /**
@@ -236,7 +236,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public String getStreet()
     {
-        return street;
+        return address.street;
     }
 
     /**
@@ -247,7 +247,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public String getCity()
     {
-        return city;
+        return address.city;
     }
 
     /**
@@ -258,7 +258,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public String getState()
     {
-        return state;
+        return address.state;
     }
 
     /**
@@ -269,7 +269,7 @@ public class AddressEntry implements Comparable<AddressEntry>{
 
     public Integer getZip()
     {
-        return zip;
+        return address.zip;
     }
 
     /**
@@ -293,7 +293,6 @@ public class AddressEntry implements Comparable<AddressEntry>{
     {
         return email;
     }
-
 
 
 }
