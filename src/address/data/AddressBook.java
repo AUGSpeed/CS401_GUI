@@ -40,12 +40,12 @@ public class AddressBook {
 
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO " +
                             "ADDRESSENTRYTABLE values(?,?,?,?,?,?,?,?)");
-           stmt.setString(1, addressEntry.firstName);
-           stmt.setString(2, addressEntry.lastName);
-           stmt.setString(3, addressEntry.street);
-           stmt.setString(4, addressEntry.city);
-           stmt.setString(5, addressEntry.state);
-           stmt.setInt(6, addressEntry.zip);
+           stmt.setString(1, addressEntry.name.firstName);
+           stmt.setString(2, addressEntry.name.lastName);
+           stmt.setString(3, addressEntry.address.street);
+           stmt.setString(4, addressEntry.address.city);
+           stmt.setString(5, addressEntry.address.state);
+           stmt.setInt(6, addressEntry.address.zip);
            stmt.setString(7, addressEntry.phone);
            stmt.setString(8, addressEntry.email);
            stmt.executeUpdate();

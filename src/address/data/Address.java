@@ -4,7 +4,7 @@ public class Address {
     String street;
     String city;
     String state;
-    int zip;
+    Integer zip;
 
     Address(){
         street="NONE";
@@ -12,7 +12,7 @@ public class Address {
         state="NONE";
         zip=0;
     }
-    Address(String stree, String cit, String stat, int zi){
+    Address(String stree, String cit, String stat, Integer zi){
         street=stree;
         city=cit;
         state=stat;
@@ -24,6 +24,6 @@ public class Address {
     void setCity(String x){ city = x; }
     String getState(){ return state; }
     void setState(String x){ state = x; }
-    int getZip(){ return zip; }
+    Integer getZip(){ return zip; }
     void setZip(int x){ zip = x; }
 }

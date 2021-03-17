@@ -122,7 +122,7 @@ public class AddressBookGUI extends JDialog{
                     PreparedStatement stmt = conn.prepareStatement("DELETE " +
                             "FROM ADDRESSENTRYTABLE WHERE FIRST_NAME = ?");
                     stmt.setString(1,
-                            ab.addressEntryList.get(index).firstName);
+                            ab.addressEntryList.get(index).name.getFirstName());
                     stmt.executeUpdate();
 
                     conn.close();

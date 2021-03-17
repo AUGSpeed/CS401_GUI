@@ -12,8 +12,8 @@ public class Name {
         lastName=b;
     }
 
-    String getFirstName(){ return firstName; }
-    void setFirstName(String x){ firstName = x; }
-    String getLastName(){ return lastName; }
-    void setLastName(String x){ lastName = x; }
+    public String getFirstName(){ return firstName; }
+    public void setFirstName(String x){ firstName = x; }
+    public String getLastName(){ return lastName; }
+    public void setLastName(String x){ lastName = x; }
 }
