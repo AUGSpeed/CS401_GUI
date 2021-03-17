@@ -17,6 +17,8 @@ public class AddressBookGUI extends JDialog{
     private JButton removeButton;
     private JButton newButton;
     private JScrollPane scrollPane;
+    private JButton exitButton;
+    private JButton searchButton;
     private String userDB;
     private String passDB;
     JList <AddressEntry> addressEntryJList = new JList<AddressEntry>();
@@ -26,7 +28,7 @@ public class AddressBookGUI extends JDialog{
     FileReader reader;
     {
         try {
-            reader = new FileReader("src/com/company/db.properties");
+            reader = new FileReader("src/address/db.properties");
             Properties p = new Properties();
             p.load(reader);
             userDB = (p.getProperty("user"));
@@ -137,6 +139,20 @@ public class AddressBookGUI extends JDialog{
                 addressEntryJList.setLayoutOrientation(JList.HORIZONTAL_WRAP);
                 addressEntryJList.setVisibleRowCount(-1);
                 scrollPane.setViewportView(addressEntryJList);
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Search search = new Search(ab);
+                search.pack();
+                search.setVisible(true);
             }
         });
     }
