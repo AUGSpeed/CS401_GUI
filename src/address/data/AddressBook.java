@@ -39,7 +39,8 @@ public class AddressBook {
            // Statement stmt = conn.createStatement();
 
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO " +
-                            "ADDRESSENTRYTABLE values(?,?,?,?,?,?,?,?)");
+                            "ADDRESSENTRYTABLE values(?,?,?,?,?,?,?,?, " +
+                    "default )");
            stmt.setString(1, addressEntry.name.firstName);
            stmt.setString(2, addressEntry.name.lastName);
            stmt.setString(3, addressEntry.address.street);
