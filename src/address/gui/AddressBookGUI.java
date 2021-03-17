@@ -51,6 +51,7 @@ public class AddressBookGUI extends JDialog{
         displayButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ab = new AddressBook();
                 try{
                     Class.forName("oracle.jdbc.OracleDriver");
                     Connection conn = DriverManager.getConnection("jdbc:oracle:thin" +
@@ -59,22 +60,22 @@ public class AddressBookGUI extends JDialog{
                    Statement stmt = conn.createStatement();
                    ResultSet rs = stmt.executeQuery("select * from " +
                            "ADDRESSENTRYTABLE");
-                   int i = 0;
                     myaddressEntryListModel = new DefaultListModel<AddressEntry>();
                     while(rs.next()){
                        AddressEntry entry = new AddressEntry(rs.getString(1),
                                rs.getString(2),rs.getString(3),rs.getString(4),
                                rs.getString(5), rs.getInt(6), rs.getString(7),
                                rs.getString(8));
-
-                       myaddressEntryListModel.add(i, entry);
-                       ab.add(entry);
-                       i++;
+                       ab.addressEntryList.addElement(entry);
 
                    }
                     conn.close();
                 }
                 catch(Exception err){System.out.println(err);}
+
+                myaddressEntryListModel = new DefaultListModel<AddressEntry>();
+                for(int i = 0; i<ab.addressEntryList.size(); i++)
+                {  myaddressEntryListModel.add(i, ab.addressEntryList.elementAt(i)); }
 
                 addressEntryJList = new JList<AddressEntry>(myaddressEntryListModel);
                 addressEntryJList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
