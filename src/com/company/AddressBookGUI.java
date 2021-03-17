@@ -6,6 +6,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.*;
+import java.io.*;
+import java.util.*;
 
 public class AddressBookGUI extends JDialog{
     private JPanel contentPane;
@@ -13,9 +15,26 @@ public class AddressBookGUI extends JDialog{
     private JButton removeButton;
     private JButton newButton;
     private JScrollPane scrollPane;
+    private String userDB;
+    private String passDB;
     JList <AddressEntry> addressEntryJList = new JList<AddressEntry>();
     DefaultListModel<AddressEntry> myaddressEntryListModel = new DefaultListModel<AddressEntry>();
     AddressBook ab = new AddressBook();
+
+    FileReader reader;
+    {
+        try {
+            reader = new FileReader("src/com/company/db.properties");
+            Properties p = new Properties();
+            p.load(reader);
+            userDB = (p.getProperty("user"));
+            passDB = (p.getProperty("password"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     public AddressBookGUI() {
@@ -32,7 +51,7 @@ public class AddressBookGUI extends JDialog{
                     Class.forName("oracle.jdbc.OracleDriver");
                     Connection conn = DriverManager.getConnection("jdbc:oracle:thin" +
                                     ":@adcsdb01.csueastbay.edu:1521:mcspdb.ad.csueastbay.edu"
-                            , "MCS1018", "y_WrlhyT");
+                            , userDB, passDB);
                    Statement stmt = conn.createStatement();
                    ResultSet rs = stmt.executeQuery("select * from " +
                            "ADDRESSENTRYTABLE");
@@ -94,7 +113,7 @@ public class AddressBookGUI extends JDialog{
                     Class.forName("oracle.jdbc.OracleDriver");
                     Connection conn = DriverManager.getConnection("jdbc:oracle:thin" +
                                     ":@adcsdb01.csueastbay.edu:1521:mcspdb.ad.csueastbay.edu"
-                            , "MCS1018", "y_WrlhyT");
+                            , userDB, passDB);
 
                     PreparedStatement stmt = conn.prepareStatement("DELETE " +
                             "FROM ADDRESSENTRYTABLE WHERE FIRST_NAME = ?");
