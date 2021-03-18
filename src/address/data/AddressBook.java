@@ -36,20 +36,20 @@ public class AddressBook {
             Connection conn = DriverManager.getConnection("jdbc:oracle:thin" +
                             ":@adcsdb01.csueastbay.edu:1521:mcspdb.ad.csueastbay.edu"
                     , "MCS1018", "y_WrlhyT");
-           // Statement stmt = conn.createStatement();
+            // Statement stmt = conn.createStatement();
 
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO " +
-                            "ADDRESSENTRYTABLE values(?,?,?,?,?,?,?,?, " +
+                    "ADDRESSENTRYTABLE values(?,?,?,?,?,?,?,?, " +
                     "default )");
-           stmt.setString(1, addressEntry.name.firstName);
-           stmt.setString(2, addressEntry.name.lastName);
-           stmt.setString(3, addressEntry.address.street);
-           stmt.setString(4, addressEntry.address.city);
-           stmt.setString(5, addressEntry.address.state);
-           stmt.setInt(6, addressEntry.address.zip);
-           stmt.setString(7, addressEntry.phone);
-           stmt.setString(8, addressEntry.email);
-           stmt.executeUpdate();
+            stmt.setString(1, addressEntry.name.firstName);
+            stmt.setString(2, addressEntry.name.lastName);
+            stmt.setString(3, addressEntry.address.street);
+            stmt.setString(4, addressEntry.address.city);
+            stmt.setString(5, addressEntry.address.state);
+            stmt.setInt(6, addressEntry.address.zip);
+            stmt.setString(7, addressEntry.phone);
+            stmt.setString(8, addressEntry.email);
+            stmt.executeUpdate();
 
             conn.close();
         }
