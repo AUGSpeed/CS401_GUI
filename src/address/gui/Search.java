@@ -46,12 +46,14 @@ public class Search extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 AddressBook ab2 = new AddressBook();
                 ab2 = ab.search(textField1.getText());
-
+                myaddressEntryListModel = new DefaultListModel<AddressEntry>();
                 for(int i = 0; i<ab2.addressEntryList.size(); i++)
                 {  myaddressEntryListModel.add(i, ab2.addressEntryList.elementAt(i)); }
                 addressEntryJList = new JList<AddressEntry>(myaddressEntryListModel);
